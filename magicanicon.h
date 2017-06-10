@@ -5,10 +5,11 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QObject>
 
-class MagicanIcon: public QObject, public QGraphicsPixmapItem{
+class MagicanIcon: public QObject, public QGraphicsPixmapItem
+{
     Q_OBJECT
 public:
-    MagicanIcon();
+    MagicanIcon(int Xpos,int Ypos);
     void mousePressEvent(QGraphicsSceneMouseEvent * event);
 };
 

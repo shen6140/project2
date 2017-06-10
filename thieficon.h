@@ -9,7 +9,7 @@ class ThiefIcon: public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 
 public:
-    ThiefIcon();
+    ThiefIcon(int Xpos,int Ypos);
     void mousePressEvent(QGraphicsSceneMouseEvent * event);
 
 };

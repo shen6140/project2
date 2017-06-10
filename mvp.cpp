@@ -5,9 +5,26 @@
 #include <stdlib.h> //for rand()
 #include "tower.h"
 #include "novice.h"
+#include "supernovice.h"
 #include "swordman.h"
 #include "thief.h"
 #include "magican.h"
+#include "acolyte.h"
+#include "archer.h"
+#include "merchant.h"
+#include "knight.h"
+#include "assassin.h"
+#include "wizard.h"
+#include "priest.h"
+#include "hunter.h"
+#include "alchemist.h"
+#include "ninja.h"
+#include "sage.h"
+#include "monk.h"
+#include "bard.h"
+#include "professor.h"
+#include "taekwondo.h"
+#include "lightning.h"
 
 MVP::MVP(): QObject(), QGraphicsPixmapItem()
 {
@@ -58,25 +75,20 @@ void MVP::move()
         {
             if (typeid(*(colliding_items[i])) == typeid(Tower))
             {
-                decreaseHP(1);
+                decreaseHP(2);
                 return;
             }
-            else if(typeid(*(colliding_items[i])) == typeid(Swordman))
+            else if (typeid(*(colliding_items[i])) == typeid(Lightning))
             {
-                decreaseHP(1);
+                decreaseHP(2);
                 return;
             }
-            else if(typeid(*(colliding_items[i])) == typeid(Thief))
+            else if(typeid(*(colliding_items[i])) == typeid(Knight) || typeid(*(colliding_items[i])) == typeid(Assassin) || typeid(*(colliding_items[i])) == typeid(Wizard) || typeid(*(colliding_items[i])) == typeid(Priest) || typeid(*(colliding_items[i])) == typeid(Hunter) || typeid(*(colliding_items[i])) == typeid(Alchemist))
             {
-                decreaseHP(1);
+                decreaseHP(2);
                 return;
             }
-            else if(typeid(*(colliding_items[i])) == typeid(Magican))
-            {
-                decreaseHP(1);
-                return;
-            }
-            else if(typeid(*(colliding_items[i])) == typeid(Novice))
+            else if(typeid(*(colliding_items[i])) == typeid(Novice) || typeid(*(colliding_items[i])) == typeid(SuperNovice) || typeid(*(colliding_items[i])) == typeid(Swordman) || typeid(*(colliding_items[i])) == typeid(Thief) || typeid(*(colliding_items[i])) == typeid(Magican) || typeid(*(colliding_items[i])) == typeid(Acolyte) || typeid(*(colliding_items[i])) == typeid(Merchant))
             {
                 decreaseHP(1);
                 return;

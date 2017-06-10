@@ -6,10 +6,10 @@
 
 extern Game * game;
 
-ThiefIcon::ThiefIcon(): QObject(), QGraphicsPixmapItem()
+ThiefIcon::ThiefIcon(int Xpos,int Ypos): QObject(), QGraphicsPixmapItem()
 {
     setPixmap(QPixmap(":/images/thiefIcon.png"));
-    setPos(325,450);
+    setPos(Xpos,Ypos);
     setScale(0.75);
 }
 

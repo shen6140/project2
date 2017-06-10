@@ -22,7 +22,9 @@ public slots:
 
 private:
     QPointF attackDest;  //attack destination
-    bool hasTarget = false;
+    bool hasFirst = false;
+    bool hasSecond = false;
+    bool hasLightning = false;
     QGraphicsPolygonItem * attackArea;
     int HP;
 };

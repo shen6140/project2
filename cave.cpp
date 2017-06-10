@@ -6,6 +6,24 @@
 #include "game.h"
 #include "enemy.h"
 #include <QGraphicsScene>
+#include "novice.h"
+#include "supernovice.h"
+#include "acolyte.h"
+#include "archer.h"
+#include "merchant.h"
+#include "knight.h"
+#include "assassin.h"
+#include "wizard.h"
+#include "priest.h"
+#include "hunter.h"
+#include "alchemist.h"
+#include "ninja.h"
+#include "sage.h"
+#include "monk.h"
+#include "bard.h"
+#include "professor.h"
+#include "taekwondo.h"
+#include "lightning.h"
 
 extern Game * game;
 
@@ -13,7 +31,7 @@ Cave::Cave(int Xpos,int Ypos): QObject(), QGraphicsPixmapItem() {
     setPixmap(QPixmap(":/images/cave.png"));
     setPos(Xpos,Ypos);
     setScale(1);
-    HP = 50;
+    HP = 150;
 
     //create vector called points
     QVector<QPointF> points;
@@ -32,6 +50,8 @@ Cave::Cave(int Xpos,int Ypos): QObject(), QGraphicsPixmapItem() {
     attackArea = new QGraphicsPolygonItem(QPolygonF(points),this);
     attackArea->setPen(QPen(Qt::transparent));
 
+//    attackArea->setPen(QPen(Qt::black));
+
     // move the polygon to the center of the tower
     QPointF poly_center(0.5,0.5);
     poly_center *= SCALE_FACTOR;
@@ -45,8 +65,8 @@ Cave::Cave(int Xpos,int Ypos): QObject(), QGraphicsPixmapItem() {
     connect(timer,SIGNAL(timeout()),this,SLOT(acquireTarget()));
     timer->start(1000);
 
-    //set attackDest
-    attackDest = QPointF(500,200);
+//    //set attackDest
+//    attackDest = QPointF(500,200);
 
 }
 
@@ -57,7 +77,7 @@ double Cave::distanceTo(QGraphicsItem *item){
 }
 
 void Cave::fire(){
-    Arrow * arrow = new Arrow();
+    Arrow * arrow = new Arrow(QString(":/images/arrow.png"));
     arrow->setPos(x()+33,y()+55);
     QLineF ln(QPointF(x()+33,y()+55),attackDest);
     int angle = -1 * ln.angle();
@@ -98,7 +118,9 @@ void Cave::acquireTarget()
         QList <QGraphicsItem *> colliding_items = attackArea->collidingItems();
         if(colliding_items.size() == 1)
         {
-            hasTarget = false;
+            hasFirst = false;
+            hasSecond = false;
+            hasLightning = false;
             return;
         }
 
@@ -107,25 +129,50 @@ void Cave::acquireTarget()
 
         for(size_t i = 0 , n = colliding_items.size() ; i < n ; i++)
         {
-            if (typeid(*(colliding_items[i])) == typeid(Novice)||typeid(*(colliding_items[i])) == typeid(Swordman)||typeid(*(colliding_items[i])) == typeid(Magican)||typeid(*(colliding_items[i])) == typeid(Thief))
+
+            if(typeid(*(colliding_items[i])) == typeid(Lightning))
+            {
+                hasLightning = true;
+            }
+            else if (typeid(*(colliding_items[i])) == typeid(Knight) || typeid(*(colliding_items[i])) == typeid(Assassin) || typeid(*(colliding_items[i])) == typeid(Wizard) || typeid(*(colliding_items[i])) == typeid(Priest) || typeid(*(colliding_items[i])) == typeid(Hunter) || typeid(*(colliding_items[i])) == typeid(Alchemist) || typeid(*(colliding_items[i])) == typeid(Ninja) || typeid(*(colliding_items[i])) == typeid(Sage))
             {
                 double thisDistance = distanceTo(colliding_items[i]);
                 if(thisDistance < closestDistance)
                 {
                     closestDistance = thisDistance;
                     closestPoint = colliding_items[i]->pos();
-                    hasTarget = true;
+                    hasSecond = true;
+                }
+            }
+            else if (typeid(*(colliding_items[i])) == typeid(Novice) || typeid(*(colliding_items[i])) == typeid(SuperNovice) || typeid(*(colliding_items[i])) == typeid(Swordman) || typeid(*(colliding_items[i])) == typeid(Magican) || typeid(*(colliding_items[i])) == typeid(Thief) || typeid(*(colliding_items[i])) == typeid(Acolyte) || typeid(*(colliding_items[i])) == typeid(Archer) || typeid(*(colliding_items[i])) == typeid(Merchant))
+            {
+                double thisDistance = distanceTo(colliding_items[i]);
+                if(thisDistance < closestDistance)
+                {
+                    closestDistance = thisDistance;
+                    closestPoint = colliding_items[i]->pos();
+                    hasFirst = true;
                 }
             }
         }
-        if(hasTarget == true)
+        if (hasLightning == true)
+        {
+            decreaseHP(2);
+        }
+        if (hasSecond == true)
+        {
+            attackDest = closestPoint;
+            fire();
+            decreaseHP(2);
+            hasSecond = false;
+        }
+        if(hasFirst == true)
         {
             attackDest = closestPoint;
             fire();
             decreaseHP(1);
-            hasTarget = false;
+            hasFirst = false;
         }
-
     }
 
 }

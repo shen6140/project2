@@ -6,14 +6,17 @@
 
 extern Game * game;
 
-NoviceIcon::NoviceIcon(): QObject(), QGraphicsPixmapItem() {
+NoviceIcon::NoviceIcon(int Xpos,int Ypos): QObject(), QGraphicsPixmapItem()
+{
     setPixmap(QPixmap(":/images/noviceIcon.png"));
-    setPos(10,450);
+    setPos(Xpos,Ypos);
     setScale(0.75);
 }
 
-void NoviceIcon::mousePressEvent(QGraphicsSceneMouseEvent *event){
-    if(!game->buildNovice){
+void NoviceIcon::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    if(!game->buildNovice)
+    {
         game->buildNovice = new Novice();
         game->setCursor(QString(":/images/novice.png"));
     }

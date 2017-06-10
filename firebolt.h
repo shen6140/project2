@@ -4,10 +4,11 @@
 #include <QGraphicsPixmapItem>
 #include <QObject>
 
-class Firebolt: public QObject, public QGraphicsPixmapItem{
+class Firebolt: public QObject, public QGraphicsPixmapItem
+{
     Q_OBJECT
 public:
-    Firebolt();
+    Firebolt(QString filename, float scale);
 public slots:
     void move();
 

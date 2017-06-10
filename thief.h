@@ -10,6 +10,7 @@ class Thief: public QObject, public QGraphicsPixmapItem{
 public:
     Thief();
     void decreaseHP(int damage);
+    void increaseHP(int heal);
     double distanceTo(QGraphicsItem * item);
     void fire();
 

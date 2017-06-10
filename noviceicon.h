@@ -9,7 +9,7 @@ class NoviceIcon: public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 
 public:
-    NoviceIcon();
+    NoviceIcon(int Xpos,int Ypos);
     void mousePressEvent(QGraphicsSceneMouseEvent * event);
 
 };

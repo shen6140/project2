@@ -4,13 +4,15 @@
 #include "game.h"
 #include "enemy.h"
 #include "cave.h"
+#include "mvp.h"
 
 extern Game * game;
 
-Firebolt::Firebolt(): QObject(), QGraphicsPixmapItem(){
+Firebolt::Firebolt(QString filename, float scale): QObject(), QGraphicsPixmapItem()
+{
     //put in a arrow image
-    setPixmap(QPixmap(":/images/firebolt.png"));
-    setScale(2);
+    setPixmap(QPixmap(filename));
+    setScale(scale);
 
     //connect to timer
     QTimer * timer = new QTimer();
@@ -23,7 +25,7 @@ void Firebolt::move()
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for (int i = 0, n = colliding_items.size(); i < n; ++i)
     {
-        if (typeid(*(colliding_items[i])) == typeid(Enemy) || typeid(*(colliding_items[i])) == typeid(Cave))
+        if (typeid(*(colliding_items[i])) == typeid(Enemy) || typeid(*(colliding_items[i])) == typeid(MVP) || typeid(*(colliding_items[i])) == typeid(Cave))
         {
             scene()->removeItem(this);
             delete this;

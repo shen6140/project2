@@ -1,33 +1,100 @@
 <RCC>
     <qresource prefix="/images">
-        <file>grassland.png</file>
-        <file>thief.png</file>
-        <file>swordman.png</file>
-        <file>novice.png</file>
-        <file>magican.png</file>
-        <file>swordmanIcon.png</file>
-        <file>thiefIcon.png</file>
-        <file>noviceIcon.png</file>
-        <file>magicanIcon.png</file>
+        <file>wizardIconC.png</file>
+        <file>wizardIcon.png</file>
+        <file>wizard.png</file>
         <file>tower.png</file>
-        <file>arrow.png</file>
-        <file>firebolt.png</file>
-        <file>redPoring.png</file>
+        <file>thiefIconC.png</file>
+        <file>thiefIcon.png</file>
+        <file>thief.png</file>
+        <file>taekwondoIconC.png</file>
+        <file>taekwondoIcon.png</file>
+        <file>taekwondo.png</file>
+        <file>swordmanIconC.png</file>
+        <file>swordmanIcon.png</file>
+        <file>swordman.png</file>
+        <file>superNoviceIconC.png</file>
+        <file>superNoviceIcon.png</file>
+        <file>superNovice.png</file>
         <file>stone.png</file>
-        <file>cave.png</file>
-        <file>darkLord.png</file>
+        <file>shuriken3.png</file>
+        <file>shuriken2.png</file>
+        <file>shuriken1.png</file>
+        <file>santaPoring.png</file>
+        <file>sageIconC.png</file>
+        <file>sageIcon.png</file>
+        <file>sage.png</file>
+        <file>redPotion.png</file>
+        <file>redPoring.png</file>
+        <file>professorIconC.png</file>
+        <file>professorIcon.png</file>
+        <file>professor.png</file>
+        <file>priestIconC.png</file>
+        <file>priestIcon.png</file>
+        <file>priest.png</file>
         <file>orcLord.png</file>
         <file>orcHero.png</file>
+        <file>orangePotion.png</file>
+        <file>noviceIconC.png</file>
+        <file>noviceIcon.png</file>
+        <file>novice.png</file>
+        <file>ninjaIconC.png</file>
+        <file>ninjaIcon.png</file>
+        <file>ninja.png</file>
         <file>moonlight.png</file>
+        <file>monkIconC.png</file>
+        <file>monkIcon.png</file>
+        <file>monk.png</file>
         <file>mistress.png</file>
-        <file>drake.png</file>
-        <file>baphomet.png</file>
-        <file>amonRa.png</file>
+        <file>merchantIconC.png</file>
+        <file>merchantIcon.png</file>
+        <file>merchant.png</file>
+        <file>magicanIconC.png</file>
+        <file>magicanIcon.png</file>
+        <file>magican.png</file>
+        <file>knightIconC.png</file>
+        <file>knightIcon.png</file>
+        <file>knight.png</file>
+        <file>hunterIconC.png</file>
+        <file>hunterIcon.png</file>
+        <file>hunter.png</file>
+        <file>greenPotion.png</file>
         <file>greenPoring.png</file>
-        <file>santaPoring.png</file>
+        <file>grassland.png</file>
+        <file>firebolt.png</file>
+        <file>drake.png</file>
+        <file>darkLord.png</file>
+        <file>coldbolt.png</file>
+        <file>coin.png</file>
+        <file>cave.png</file>
+        <file>book5.png</file>
+        <file>book4.png</file>
+        <file>book3.png</file>
+        <file>book2.png</file>
+        <file>book1.png</file>
+        <file>bardIconC.png</file>
+        <file>bardIcon.png</file>
+        <file>bard.png</file>
+        <file>baphomet.png</file>
+        <file>assassinIconC.png</file>
+        <file>assassinIcon.png</file>
+        <file>assassin.png</file>
+        <file>arrow.png</file>
+        <file>archerIconC.png</file>
+        <file>archerIcon.png</file>
+        <file>archer.png</file>
+        <file>amonRa.png</file>
+        <file>alchemistIconC.png</file>
+        <file>alchemistIcon.png</file>
+        <file>alchemist.png</file>
+        <file>acolyteIconC.png</file>
+        <file>acolyteIcon.png</file>
+        <file>acolyte.png</file>
+        <file>lightningBolt.png</file>
     </qresource>
     <qresource prefix="/music">
-        <file>streamside.mp3</file>
         <file>mainTheme.mp3</file>
+        <file>poem.mp3</file>
+        <file>streamside.mp3</file>
     </qresource>
 </RCC>

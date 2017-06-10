@@ -6,9 +6,9 @@
 
 extern Game * game;
 
-SwordmanIcon::SwordmanIcon(): QObject(), QGraphicsPixmapItem() {
+SwordmanIcon::SwordmanIcon(int Xpos,int Ypos): QObject(), QGraphicsPixmapItem() {
     setPixmap(QPixmap(":/images/swordmanIcon.png"));
-    setPos(220,450);
+    setPos(Xpos,Ypos);
     setScale(0.75);
 }
 

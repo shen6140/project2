@@ -10,6 +10,7 @@ class Novice: public QObject, public QGraphicsPixmapItem{
 public:
     Novice();
     void decreaseHP(int damage);
+    void increaseHP(int heal);
 
 public slots:
     void move();

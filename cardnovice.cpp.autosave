@@ -1,0 +1,14 @@
+
+#include "cardnovice.h"
+
+CardNovice::CardNovice(): QObject(), QGraphicsPixmapItem()
+{
+    setPixmap(QPixmap(":/images/noviceIcon.png"));
+    setPos(Xpos,Ypos);
+    setScale(1);
+}
+
+void CardNovice::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    emit clicked();
+}

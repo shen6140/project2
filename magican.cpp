@@ -8,6 +8,10 @@
 #include "game.h"
 #include "cave.h"
 #include "mvp.h"
+#include <stdlib.h> //for rand()
+#include "acolyte.h"
+#include "priest.h"
+#include "monk.h"
 
 extern Game * game;
 
@@ -33,6 +37,8 @@ Magican::Magican(): QObject(), QGraphicsPixmapItem() {
     // create the QGraphicsPolygonItem
     attackArea = new QGraphicsPolygonItem(QPolygonF(points),this);
     attackArea->setPen(QPen(Qt::transparent));
+
+//    attackArea->setPen(QPen(Qt::black));
 
     // move the polygon to the center of the tower
     QPointF poly_center(0.5,0.5);
@@ -74,6 +80,10 @@ void Magican::move(){
             {
                 decreaseHP(5);
                 return;
+            }
+            if (typeid(*(colliding_items[i])) == typeid(Acolyte) || typeid(*(colliding_items[i])) == typeid(Priest) || typeid(*(colliding_items[i])) == typeid(Monk))
+            {
+                increaseHP(2);
             }
         }
         else if (HP <= 0)
@@ -135,6 +145,11 @@ void Magican::decreaseHP(int damage)
     HP = HP - damage;
 }
 
+void Magican::increaseHP(int heal)
+{
+    HP = HP + heal;
+}
+
 double Magican::distanceTo(QGraphicsItem *item)
 {
     QLineF ln(pos(),item->pos());
@@ -143,25 +158,54 @@ double Magican::distanceTo(QGraphicsItem *item)
 
 void Magican::fire()
 {
-    Firebolt * firebolt1 = new Firebolt();
-    firebolt1->setPos(x()-100,y()-100);
-    QLineF ln1(QPointF(x()-100,y()-100),attackDest);
-    int angle1 = -1 * ln1.angle();
-    firebolt1->setRotation(angle1);
-    game->scene->addItem(firebolt1);
+    int random_magic = rand() % 2;
 
-    Firebolt * firebolt2 = new Firebolt();
-    firebolt2->setPos(x()-150,y()-150);
-    QLineF ln2(QPointF(x()-150,y()-150),attackDest);
-    int angle2 = -1 * ln2.angle();
-    firebolt2->setRotation(angle2);
-    game->scene->addItem(firebolt2);
+    if(random_magic == 0)
+    {
+        Firebolt * firebolt1 = new Firebolt(QString(":/images/firebolt.png"), 2);
+        firebolt1->setPos(x()-100,y()-100);
+        QLineF ln1(QPointF(x()-100,y()-100),attackDest);
+        int angle1 = -1 * ln1.angle();
+        firebolt1->setRotation(angle1);
+        game->scene->addItem(firebolt1);
 
-    Firebolt * firebolt3 = new Firebolt();
-    firebolt3->setPos(x()-200,y()-200);
-    QLineF ln3(QPointF(x()-200,y()-200),attackDest);
-    int angle3 = -1 * ln3.angle();
-    firebolt3->setRotation(angle3);
-    game->scene->addItem(firebolt3);
+        Firebolt * firebolt2 = new Firebolt(QString(":/images/firebolt.png"), 2);
+        firebolt2->setPos(x()-150,y()-150);
+        QLineF ln2(QPointF(x()-150,y()-150),attackDest);
+        int angle2 = -1 * ln2.angle();
+        firebolt2->setRotation(angle2);
+        game->scene->addItem(firebolt2);
+
+        Firebolt * firebolt3 = new Firebolt(QString(":/images/firebolt.png"), 2);
+        firebolt3->setPos(x()-200,y()-200);
+        QLineF ln3(QPointF(x()-200,y()-200),attackDest);
+        int angle3 = -1 * ln3.angle();
+        firebolt3->setRotation(angle3);
+        game->scene->addItem(firebolt3);
+    }
+    else if(random_magic == 1)
+    {
+        Firebolt * firebolt1 = new Firebolt(QString(":/images/coldbolt.png"), 0.8);
+        firebolt1->setPos(x()-100,y()-100);
+        QLineF ln1(QPointF(x()-100,y()-100),attackDest);
+        int angle1 = -1 * ln1.angle();
+        firebolt1->setRotation(angle1);
+        game->scene->addItem(firebolt1);
+
+        Firebolt * firebolt2 = new Firebolt(QString(":/images/coldbolt.png"), 0.8);
+        firebolt2->setPos(x()-150,y()-150);
+        QLineF ln2(QPointF(x()-150,y()-150),attackDest);
+        int angle2 = -1 * ln2.angle();
+        firebolt2->setRotation(angle2);
+        game->scene->addItem(firebolt2);
+
+        Firebolt * firebolt3 = new Firebolt(QString(":/images/coldbolt.png"), 0.8);
+        firebolt3->setPos(x()-200,y()-200);
+        QLineF ln3(QPointF(x()-200,y()-200),attackDest);
+        int angle3 = -1 * ln3.angle();
+        firebolt3->setRotation(angle3);
+        game->scene->addItem(firebolt3);
+    }
+
 }
 

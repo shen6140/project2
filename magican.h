@@ -10,6 +10,7 @@ class Magican: public QObject, public QGraphicsPixmapItem{
 public:
     Magican();
     void decreaseHP(int damage);
+    void increaseHP(int heal);
     double distanceTo(QGraphicsItem * item);
     void fire();
 

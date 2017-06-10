@@ -10,11 +10,12 @@
 
 extern Game * game;
 
-Tower::Tower(int Xpos,int Ypos): QObject(), QGraphicsPixmapItem() {
+Tower::Tower(int Xpos,int Ypos): QObject(), QGraphicsPixmapItem()
+{
     setPixmap(QPixmap(":/images/tower.png"));
     setPos(Xpos,Ypos);
     setScale(0.5);
-    HP = 50;
+    HP = 100;
 
     //create vector called points
     QVector<QPointF> points;
@@ -22,7 +23,8 @@ Tower::Tower(int Xpos,int Ypos): QObject(), QGraphicsPixmapItem() {
 
     //scale factor of attackArea
     int SCALE_FACTOR = 400;
-    for(size_t i = 0, n = points.size(); i < n; ++i){
+    for(size_t i = 0, n = points.size(); i < n; ++i)
+    {
         points[i] *= SCALE_FACTOR;
     }
 
@@ -32,6 +34,8 @@ Tower::Tower(int Xpos,int Ypos): QObject(), QGraphicsPixmapItem() {
     // create the QGraphicsPolygonItem
     attackArea = new QGraphicsPolygonItem(QPolygonF(points),this);
     attackArea->setPen(QPen(Qt::transparent));
+
+//    attackArea->setPen(QPen(Qt::black));
 
     // move the polygon to the center of the tower
     QPointF poly_center(0.5,0.5);
@@ -46,19 +50,20 @@ Tower::Tower(int Xpos,int Ypos): QObject(), QGraphicsPixmapItem() {
     connect(timer,SIGNAL(timeout()),this,SLOT(acquireTarget()));
     timer->start(1000);
 
-    //set attackDest
-    attackDest = QPointF(500,200);
+//    //set attackDest
+//    attackDest = QPointF(500,200);
 
 }
 
-double Tower::distanceTo(QGraphicsItem *item){
+double Tower::distanceTo(QGraphicsItem *item)
+{
     QLineF ln(pos(),item->pos());
     return ln.length();
 
 }
 
 void Tower::fire(){
-    Arrow * arrow = new Arrow();
+    Arrow * arrow = new Arrow(QString(":/images/arrow.png"));
     arrow->setPos(x()+41,y()+50);
     QLineF ln(QPointF(x()+41,y()+50),attackDest);
     int angle = -1 * ln.angle();

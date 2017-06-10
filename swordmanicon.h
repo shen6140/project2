@@ -9,7 +9,7 @@ class SwordmanIcon: public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
 
 public:
-    SwordmanIcon();
+    SwordmanIcon(int Xpos,int Ypos);
     void mousePressEvent(QGraphicsSceneMouseEvent * event);
 
 };

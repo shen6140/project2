@@ -1,0 +1,23 @@
+#ifndef CARDNOVICE_H
+#define CARDNOVICE_H
+
+#include <QGraphicsSceneMouseEvent>
+#include <QObject>
+#include <QGraphicsPixmapItem>
+
+class CardNovice: public QObject, public QGraphicsPixmapItem
+{
+    Q_OBJECT
+public:
+    // constructors
+    CardNovice();
+
+    // public methods (events)
+    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+
+signals:
+    void clicked();
+
+};
+
+#endif // CARDNOVICE_H

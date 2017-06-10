@@ -3,12 +3,13 @@
 #include <qmath.h>   //for qSin, qCos
 #include "game.h"
 #include "enemy.h"
+#include "mvp.h"
 
 extern Game * game;
 
-Arrow::Arrow(): QObject(), QGraphicsPixmapItem(){
+Arrow::Arrow(QString filename): QObject(), QGraphicsPixmapItem(){
     //put in a arrow image
-    setPixmap(QPixmap(":/images/arrow.png"));
+    setPixmap(QPixmap(filename));
 
     //connect to timer
     QTimer * timer = new QTimer();
@@ -21,7 +22,7 @@ void Arrow::move()
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for (int i = 0, n = colliding_items.size(); i < n; ++i)
     {
-        if (typeid(*(colliding_items[i])) == typeid(Enemy))
+        if (typeid(*(colliding_items[i])) == typeid(Enemy) || typeid(*(colliding_items[i])) == typeid(MVP))
         {
             scene()->removeItem(this);
             delete this;

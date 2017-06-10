@@ -10,6 +10,7 @@ class Swordman: public QObject, public QGraphicsPixmapItem{
 public:
     Swordman();
     void decreaseHP(int damage);
+    void increaseHP(int heal);
 
 public slots:
     void move();

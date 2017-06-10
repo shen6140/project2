@@ -8,6 +8,9 @@
 #include "game.h"
 #include "cave.h"
 #include "mvp.h"
+#include "acolyte.h"
+#include "priest.h"
+#include "monk.h"
 
 extern Game * game;
 
@@ -33,6 +36,8 @@ Thief::Thief(): QObject(), QGraphicsPixmapItem() {
     // create the QGraphicsPolygonItem
     attackArea = new QGraphicsPolygonItem(QPolygonF(points),this);
     attackArea->setPen(QPen(Qt::transparent));
+
+//    attackArea->setPen(QPen(Qt::black));
 
     // move the polygon to the center of the tower
     QPointF poly_center(0.5,0.5);
@@ -70,10 +75,14 @@ void Thief::move(){
                 decreaseHP(1);
                 return;
             }
-            else if (typeid(*(colliding_items[i])) == typeid(MVP))
+            if (typeid(*(colliding_items[i])) == typeid(MVP))
             {
                 decreaseHP(5);
                 return;
+            }
+            if (typeid(*(colliding_items[i])) == typeid(Acolyte) || typeid(*(colliding_items[i])) == typeid(Priest) || typeid(*(colliding_items[i])) == typeid(Monk))
+            {
+                increaseHP(2);
             }
         }
         else if (HP <= 0)
@@ -133,6 +142,11 @@ void Thief::acquireTarget()
 void Thief::decreaseHP(int damage)
 {
     HP = HP - damage;
+}
+
+void Thief::increaseHP(int heal)
+{
+    HP = HP + heal;
 }
 
 double Thief::distanceTo(QGraphicsItem *item)

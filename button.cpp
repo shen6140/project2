@@ -17,8 +17,6 @@ Button::Button(QString name, QGraphicsItem *parent):  QGraphicsRectItem(parent){
     int yPos = rect().height()/2 - text->boundingRect().height()/2;
     text->setPos(xPos,yPos);
 
-    // allow responding to hover events
-    setAcceptHoverEvents(true);
 }
 
 void Button::mousePressEvent(QGraphicsSceneMouseEvent *event)
@@ -26,20 +24,4 @@ void Button::mousePressEvent(QGraphicsSceneMouseEvent *event)
     emit clicked();
 }
 
-void Button::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
-{
-    // change color to cyan
-    QBrush brush;
-    brush.setStyle(Qt::SolidPattern);
-    brush.setColor(Qt::cyan);
-    setBrush(brush);
-}
 
-void Button::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
-{
-    // change color to dark cyan
-    QBrush brush;
-    brush.setStyle(Qt::SolidPattern);
-    brush.setColor(Qt::darkCyan);
-    setBrush(brush);
-}

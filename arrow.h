@@ -4,10 +4,11 @@
 #include <QGraphicsPixmapItem>
 #include <QObject>
 
-class Arrow: public QObject, public QGraphicsPixmapItem{
+class Arrow: public QObject, public QGraphicsPixmapItem
+{
     Q_OBJECT
 public:
-    Arrow();
+    Arrow(QString filename);
 public slots:
     void move();
 
